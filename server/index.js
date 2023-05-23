@@ -5,12 +5,12 @@ import { getDocument , updateDocument } from "./controller/documentController.js
 import dotenv from 'dotenv';
 dotenv.config();
 
-const username=process.env.DB_USERNAME;
-const password=process.env.DB_PASSWORD;
-const BASE_URL=process.env.BASE_URL;
-Connection(username,password);
+const URL=process.env.DB_URL;
+const BASE= process.env.MONGODB_URI || URL ;
+Connection(BASE);
 
 // server class object
+const BASE_URL=process.env.BASE_URL;
 const PORT=process.env.PORT || 9000;
 const io=new Server(PORT,{
     cors :{
