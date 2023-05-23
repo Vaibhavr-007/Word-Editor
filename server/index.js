@@ -7,13 +7,14 @@ dotenv.config();
 
 const username=process.env.DB_USERNAME;
 const password=process.env.DB_PASSWORD;
+const BASE_URL=process.env.BASE_URL;
 Connection(username,password);
 
 // server class object
-const PORT=9000;
+const PORT=process.env.PORT || 9000;
 const io=new Server(PORT,{
     cors :{
-        origin: 'http://localhost:3000',
+        origin: `${BASE_URL}`,
         mehtods :['GET','POST']
     }
 });
